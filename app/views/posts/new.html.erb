@@ -1,1 +1,38 @@
-<%= render 'posts/form'%>
+<div class="row">
+   <div class="col-md-2"> 
+        <%= render 'partials/user_profile_side', user: current_user %>                
+    </div>
+
+    <div class="col-md-8">
+			<%= form_for(@post, url: posts_path(@post)) do |x| %>
+					
+					<div class="form-group">    
+					<%= x.label :title%>  
+					<%= x.text_field :title, 
+													Placeholder: "#{current_user.first_name.capitalize}  Your question title",
+													class: "'form-control post_title mt-1 mb-2 px-2 py-2", 
+													id: "title"%>
+				</div>
+				<div class="form-group">    
+					<%= x.label :content%>  
+					<%= x.rich_text_area :content, 
+													Placeholder: "#{current_user.first_name.capitalize} Your question body",
+													class: "'form-control  post_box mt-1 mb-2 px-2 py-2", 
+													id: "content"%>
+				</div>
+
+				<div class="field">
+					<%= x.hidden_field :user_id, value: current_user.id %>
+				</div>
+
+				<div class="form-group">
+					<%= x.submit "Ask", class: "btn btn-primary post_button"  %>
+				</div>
+			<%end %> 
+    </div>
+    <div class="col-md-2">
+         
+    </div>
+
+</div>
+

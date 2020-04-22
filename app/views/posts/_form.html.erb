@@ -1,18 +1,27 @@
 <div class="px-3 pb-5 bg-white">
   <%= form_for(@post, url: posts_path(@post)) do |x| %>
-    <div class="field">     
-      <%= x.text_area :content, 
-                      Placeholder: "#{current_user.first_name.capitalize} what's on your mind ...",
-                      class: "post_box mt-4 mb-2 px-2 py-2", 
-                      id: "content"%>
-    </div>
+
+		<div class="form-group">    
+					<%= x.label :title%>  
+					<%= x.text_field :title, 
+													Placeholder: "#{current_user.first_name.capitalize}  Your question title",
+													class: "'form-control post_title mt-1 mb-2 px-2 py-2", 
+													id: "title"%>
+				</div>
+				<div class="form-group">    
+					<%= x.label :content%>  
+					<%= x.rich_text_area :content, 
+													Placeholder: "#{current_user.first_name.capitalize} Your question body",
+													class: "'form-control  post_box mt-1 mb-2 px-2 py-2", 
+													id: "content"%>
+				</div>
 
     <div class="field">
       <%= x.hidden_field :user_id, value: current_user.id %>
     </div>
 
     <div class="actions">
-      <%= x.submit "Post", class: "btn btn-primary post_button"  %>
+      <%= x.submit "Ask", class: "btn btn-primary post_button"  %>
     </div>
   <%end %>
 </div>

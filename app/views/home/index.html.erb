@@ -1,21 +1,22 @@
 <div class="row">
-   <div class="col-md-3"> 
+   <div class="col-md-2"> 
         <%= render 'partials/user_profile_side', user: current_user %>        
     </div>
 
-    <div class="col-md-6 posts1">
-        <%= render 'posts/form' %>
+    <div class="col-md-8 posts1">
+			<div class="my-4 float-right">
+       <%= link_to 'Ask Question', new_posts_path(@post), class: "btn btn-lg btn-success" %> 
+			</div>
         <div class="clearfix">
-        </div>
-        
-        <ul>
+        </div>   
+        <ul class="my-3">
          <%= render @posts %>
-
         </ul>
+				<h4> <%= will_paginate @posts, class: 'my-3 p-3 ' %> </h4>
     </div>
-    <div class="col-md-3">
-         
+    <div class="col-md-2">
+        <%= render 'partials/search'%>
     </div>
-
+	
 </div>
 

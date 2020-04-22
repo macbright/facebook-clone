@@ -1,0 +1,19 @@
+<% if params[:controller] == 'posts'  %>
+    <%= form_tag(posts_path,  :method => "get", id: 
+    "search-form", class: "search-form ") do %>
+        <div class="form-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Search with key words",
+            class:"form-control" %>
+        </div>
+        <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
+    <% end %>
+<% elsif params[:controller] == 'users' %>
+    <%= form_tag(users_path,  :method => "get", id: 
+    "search-form", class: "search-form ") do %>
+        <div class="form-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Search with name or email",
+            class:"form-control" %>
+        </div>
+        <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
+    <% end %>
+<% end %>

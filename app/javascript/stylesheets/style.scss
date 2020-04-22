@@ -16,7 +16,12 @@ body {
 
 .post_box {
     min-width: 100%;
-    min-height: 100px;
+    min-height: 200px;
+    overflow: hidden;
+		background-color: #fff;
+}
+.post_title {
+    min-width: 100%;
     overflow: hidden;
 }
 
@@ -207,4 +212,9 @@ body {
 .sign-facebook-nav {
     background-color: #0107FA;
     border-radius: 10px;
+}
+
+.search_user {
+	float: right;
+	margin-bottom: 30px;
 }

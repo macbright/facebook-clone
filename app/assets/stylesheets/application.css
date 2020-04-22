@@ -14,3 +14,4 @@
  *= require font_awesome5_webfont
  *= require_self
  */
+ @import "./actiontext.scss";

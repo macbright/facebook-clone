@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+ has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
 
@@ -16,6 +19,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   validates :name, presence: true, length: { minimum: 5 }
+
+  def self.search(query)
+    where("name like ? OR email like ?", "%#{query}%", "%#{query}%")
+  end
 
   def first_name
     name.split(' ').first

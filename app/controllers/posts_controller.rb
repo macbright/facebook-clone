@@ -20,7 +20,16 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @user = User.find_by(id: params[:format])
+    @comment = Comment.new
+    @like = Like.new
+    @post = Post.find_by(id: params[:format])
+    @friendship = Friendship.new
+    if params[:search]
+      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
+    else 
+      @posts = Post.all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
+    end
   end
 
   def edit
@@ -28,6 +37,17 @@ class PostsController < ApplicationController
     @like = Like.new
     @posts = Post.all
     @comment = Comment.new
+  end
+
+  def show
+    @like = Like.new
+    if params[:search]
+      @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
+    else 
+      @posts = Post.all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
+    end
+    @comment = Comment.new
+    @post = Post.find_by(id: params[:format])
   end
 
   def update
@@ -51,6 +71,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:title, :content)
   end
 end

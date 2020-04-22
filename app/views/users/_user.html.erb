@@ -1,5 +1,5 @@
 <div class="media my-4">
-  <%= link_to image_tag(user.gravatar_url, class: "rounded-circle mr-2", style: "width: 2.5rem;" ), users_show_path(user) %>
+  <%= link_to image_tag(user.avatar.url(:thumb), class: "rounded-circle mr-2", style: "width: 2.5rem;" ), users_show_path(user) %>
   <div class="media-body ml-3">
     <h5 class="mt-1 text-secondary"> <%= link_to user.name, users_show_path(user) %></h5> 
   </div>

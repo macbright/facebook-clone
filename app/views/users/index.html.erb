@@ -1,4 +1,9 @@
 <div>
+	
+		<div class="w-25 search_user ">
+			<%= render 'partials/search'%>
+		</div>
+
   <table class="table">
     <thead>
       <tr> 
@@ -35,4 +40,6 @@
           
         </tr>
     <% end %>
+		<h4> <%= will_paginate @users, class: 'my-3 p-3 ' %> </h4>
 </div>
+

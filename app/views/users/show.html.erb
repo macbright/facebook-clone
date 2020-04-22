@@ -2,7 +2,7 @@
 <div class="image ">
     
     <%= image_tag @user.gravatar_url, class: "big_avatar" %>
-     <%= image_tag @user.gravatar_url, class: "rounded-circle mx-auto small_avatar" %>
+     <%= image_tag( @user.avatar.url(:thumb), class: "rounded-circle mx-auto small_avatar" || @user.gravatar_url, class: "rounded-circle mx-auto small_avatar") %>
 </div>
 <%# <div class="clearfix">
 </div> %>
@@ -18,7 +18,9 @@
             <% if current_user.friends.include?(@user) %>
                 <p> Friends </p>
             <% elsif @user == current_user %>
-                <p> Hi, <%= current_user.name%>
+                <p> Hi, <%= current_user.name%> </p>
+								<p> <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %> 
+
             <% else %>
                 <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>
               
@@ -53,11 +55,12 @@
     </div>
 
     <div class="col-md-7 posts1">
-        <div class="bg-white px-3  ">
-            <%= render 'posts/form'%>
-        </div>
-        <div class='clearfix'>
-        </div>
+        <div class="my-4 float-right">
+					<%= link_to 'Ask Question', new_posts_path(@post), class: "btn btn-lg btn-success" %>
+				</div>
+        <div class="clearfix">
+        </div> 
+        
         <ul>
          <%= render @user.posts %>
         </ul>

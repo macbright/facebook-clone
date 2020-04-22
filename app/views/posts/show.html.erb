@@ -1,0 +1,50 @@
+<% if @post%>
+<div class="each_post">
+		<div class="user-posts">
+					<%= link_to image_tag(@post.creator.avatar.url(:thumb)), 
+						users_show_path(@post.creator) %> 
+			<span class="mr-3 name1"> 
+					<%= link_to @post.creator.name.titlecase, users_show_path(@post.creator) %> 
+			</span> 
+				<span class="created-date"> Created <%= time_ago_in_words(@post.created_at) %> ago. </span>
+		</div>
+		<div class="clearfix mb-1">
+		</div>
+		
+			<div class="post_title my-2 p-3">
+				<h4>
+					<%= link_to @post.title.titlecase, posts_path(@post) %> 
+				</h4>
+			</div>
+
+
+		<div class="post_content">
+				<%= @post.content %><br> 
+
+		<div class="d-flex justify-content-between">
+				<%= render 'likes/post_form', post: @post %>
+
+				<% if @post.user == current_user %>
+						<div class="mr-4">
+								<%= link_to "Update", edit_posts_path(@post), class: "btn btn-info edit-post" %>
+								<%= link_to "Delete", delete_post_path(@post), 
+																		method: :delete,
+																		data: { confirm: "You sure?" },
+																		class: "btn btn-danger delete-post ml-2" %>
+						</div>  
+				<% end %>
+		</div>
+
+		</div>
+
+
+		<hr>
+				<%= render @post.comments %>
+				<%= render 'comments/form', post: @post %>
+				
+
+</div>
+<% else%>
+	<p> no post found </p>
+
+<% end %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#index'
+  root to: 'posts#index'
   
   get "/friends", to: 'home#friends'
   
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/show', to: "users#show"
   get 'home' => 'home#index'
+  get 'posts' => 'posts#index'
   devise_for :users, path: '', path_names: { 
                                           sign_in: 'login', 
                                           sign_out: 'logout', 

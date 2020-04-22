@@ -1,8 +1,9 @@
 <div> 
-  <%= link_to  image_tag(user.gravatar_url, 
-                style: "width: 7rem;", 
-                class: "my-2 rounded-lg shadow-sm"), 
-                users_show_path(user) %>
+    <%= link_to image_tag(user.avatar.url(:thumb),
+							style: "width: 7rem;", 
+							class: "my-2 rounded-lg shadow-sm"), 
+              users_show_path(user) %> 
+	
   <% if params[:controller] == 'home' %>
     <h2 class="font-italic font-weight-light"> 
       <%= link_to user.name, users_show_path(user) %>
