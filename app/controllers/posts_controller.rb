@@ -2,6 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  
 
   def new
     @post = Post.new
@@ -20,16 +21,22 @@ class PostsController < ApplicationController
   end
 
   def index
+    
     @user = User.find_by(id: params[:format])
     @comment = Comment.new
     @like = Like.new
-    @post = Post.find_by(id: params[:format])
+    # @post = Post.find_by(id: params[:format])
     @friendship = Friendship.new
     if params[:search]
       @posts = Post.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
     else 
       @posts = Post.all.order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
     end
+    set_current_room
+    @message = Message.new
+    # @messages = Message.where('room_id == ?', current_room)
+    @messages = current_room.messages.last(10) if current_user
+    @followers = current_user.friends
   end
 
   def edit
@@ -73,4 +80,17 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content)
   end
+
+  def set_current_room
+    if params[:roomId]
+      @room = Room.find_by(id: params[:roomId])
+    else 
+      @room = current_user.room
+    end
+    session[:current_room] = @room.id if @room
+  end
+
+ 
+  
+
 end

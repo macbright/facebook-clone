@@ -19,7 +19,7 @@
                 <p> Friends </p>
             <% elsif @user == current_user %>
                 <p> Hi, <%= current_user.name%> </p>
-								<p> <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %> 
+								<p> <%= link_to 'Edit Profile', edit_user_registration_path(current_user) %></p> 
 
             <% else %>
                 <%= form_for(@friendship, url: friendships_path(@friendship)) do |f| %>

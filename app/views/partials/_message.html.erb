@@ -1,0 +1,6 @@
+<div class="message-row">
+	<p class="message-body"><%= message.body%></p>
+	<span> <%= link_to image_tag(message.user.avatar.url(:thumb)), 
+						users_show_path(message.user) %><small> <%= link_to message.user.name, users_show_path(message.user)%></small></span> 
+</div>
+<hr >

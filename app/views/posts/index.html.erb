@@ -2,9 +2,6 @@
 <% if user_signed_in? %>
     
 	<div class="row">
-   <div class="col-md-2"> 
-        <%= render 'partials/user_profile_side', user: current_user %>        
-    </div>
 
     <div class="col-md-8 posts1">
 			<div class="my-4 float-right">
@@ -17,8 +14,35 @@
         </ul>
 				<h4> <%= will_paginate @posts, class: 'my-3 p-3 ' %> </h4>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
         <%= render 'partials/search'%>
+				<div id="chat-window" class="col-md-12">
+				
+					<header> Channel <%= current_room.name %> </header>
+					<div class="row">
+						<div class="col-md-2" id="followers">
+							<% @followers.each do |follower| %>
+								<%= link_to follower.first_name, posts_path(current_user, roomId: follower.room.id), class: 'followers'%>
+								<br />
+							<% end %>
+						</div>
+
+						<div class="col-md-10" id="messages-box">
+							<div id="chat-box" data-room-id=<%= current_room.id%>>
+									<% @messages.each do |message| %>
+										<%= render partial: 'partials/message', locals: { message: message} %>
+									<% end %>
+							</div>
+							
+							<div id="form-box">
+								<%= form_for @message do |f| %>
+									<%= f.text_field :body, id: 'message-field', class: 'form-control pull-left'%>
+									<%= f.submit 'Send', class: 'btn ', id: 'post-btn'%>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
     </div>
 	
 	</div>

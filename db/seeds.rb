@@ -36,10 +36,12 @@ User.create!( name: 'Bright Okike',
 end
   
 50.times do |n|
+  title = Faker::DcComics.title
   content = (n%2 == 0) ? Faker::Marketing.buzzwords : Faker::GreekPhilosophers.quote
   user_id = User.all.ids.sample
 
-  Post.create!( content: content,
+  Post.create!( title: title,
+                content: content,
                 user_id: user_id,
                 created_at: Faker::Date.between(from: 100.days.ago, to: 1.days.ago) )
   end

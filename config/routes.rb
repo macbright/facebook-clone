@@ -41,4 +41,7 @@ Rails.application.routes.draw do
   resource :likes
   resources :users, only: [:index, :show]
   resource :friendships
+  resources :messages, only: [:create]
+
+  mount ActionCable.server => '/cable'
 end

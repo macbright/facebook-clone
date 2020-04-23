@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #036ffc;">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #ff9900;">
   
-  <%= link_to 'Facebook-Clone', root_path, class: "navbar-brand font-italic font-weight-bold"%>
+  <%= link_to 'Developers Networking', root_path, class: "navbar-brand font-italic font-weight-bold"%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,6 +15,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to "Your Profile", users_show_path(current_user), class: "dropdown-item" %>
             <%= link_to "Friends", friends_path, class: "dropdown-item" %>
+						<%= link_to 'Edit Profile', edit_user_registration_path(current_user), class: "dropdown-item"  %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -28,8 +29,8 @@
           <% end %>
         </li>
 
-        <li class="nav-item">    
-          <%= link_to 'Find Friends', users_index_path, class: "nav-link" %>
+        <li class="nav-item" >    
+          <%= link_to 'Connect Developers', users_index_path, class: "nav-link" %>
         </li>
     
       <% else %>  

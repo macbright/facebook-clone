@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_one :room
+  has_many :messages
 
  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
@@ -19,6 +21,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   validates :name, presence: true, length: { minimum: 5 }
+
+  after_create :create_chatroom
 
   def self.search(query)
     where("name like ? OR email like ?", "%#{query}%", "%#{query}%")
@@ -92,4 +96,11 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  private 
+
+  def create_chatroom
+    hyphenated_username = self.name.split.join('-')
+    Room.create(name: hyphenated_username, user_id: self.id)
+  end 
 end

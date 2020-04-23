@@ -218,3 +218,91 @@ body {
 	float: right;
 	margin-bottom: 30px;
 }
+
+.nav-item a{
+	color: #fff !important;
+}
+.dropdown-menu {
+	background-color: #ff9900 !important;
+	opacity: 0.85;
+	
+}
+
+path {
+  stroke: steelblue; stroke-width: 2; fill: none;
+}
+.axis path, .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+#chat-window {
+  border: 1px solid #ff9900;
+  margin-top: 50px;
+  margin-bottom: 30px;
+
+
+}
+
+#chat-window header {
+  background: #ff9900;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  font-size: 120%;
+	text-align: center;
+}
+
+#chat-box {
+  min-height: 100px;
+	max-height: 500px;
+	overflow-y: scroll;
+}
+
+#message-field {
+  width: 96%;
+}
+
+.message-body {
+  margin-bottom: 2px;
+}
+
+hr.msg {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+#followers {
+  border-right: 1px solid #ff9900;
+}
+#followers a {
+	padding: 15px;
+	font-weight: bold;
+}
+
+.followers {
+  margin-left: -15px;
+}
+
+
+#post-btn {
+  float: right;
+	background-color: #ff9900;
+	padding: 5px;
+	margin: 10px;
+	color: #fff;
+	font-weight: bold;
+}
+
+span small {
+	font-size: 9px;
+	line-height: normal;
+}
+.message-row span img{
+	height: 20px;
+	
+}
