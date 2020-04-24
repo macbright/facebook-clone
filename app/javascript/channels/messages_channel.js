@@ -3,30 +3,55 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("MessagesChannel", {
   
-	connected() {
+	connected: function() {
       var roomId;
       roomId = $("#chat-box").data("room-id");
-      this.checkIn(roomId);
+				console.log(roomId)
+      return this.checkIn(roomId);
     },
-    disconnected() {},
-    received(data) {
+    disconnected: function() {},
+    received: function(data) {
 			console.log(data)
-      const posts = $(".message-row").length;
-			console.log(posts)
+      var posts;
+      posts = $(".message-row").length;
       if (posts === 10) {
         $(".message-row").first().remove();
       }
-      $("#chat-box").append(data);
-      $("#message-field").val('');
+      $("#chat-box").prepend(data.message);
+			console.log($("#chat-box").append( data ))
+       $("#message-field").val('');
     },
-    checkIn(roomId) {
+    checkIn: function(roomId) {
       if (roomId) {
-        this.perform('checkIn', {
+        return this.perform('checkIn', {
           room_id: roomId
         });
       } else {
-        this.perform('checkOut');
+        return this.perform('checkOut');
       }
     }
 
 });
+
+var submit_messages;
+
+$(document).on('turbolinks:load', function(){
+
+	submit_messages()
+	console.log('yes we hitted the enter')
+})
+
+
+
+submit_messages = function() {
+	$('#message-field').on('keydown', function(event){
+
+		if(event.keyCode === 13){
+			event.preventDefault()
+			$('#post-btn').click()
+			event.target.val = ""
+			
+			console.log('yes we hitted the enter and function called')
+		}
+	})
+}
