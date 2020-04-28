@@ -18,7 +18,6 @@ consumer.subscriptions.create("MessagesChannel", {
         $(".message-row").first().remove();
       }
       $("#chat-box").append(chat_div(data.message));
-			console.log($("#chat-box").append( data ))
        $("#message-field").val('');
     },
     checkIn: function(roomId) {
