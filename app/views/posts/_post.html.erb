@@ -22,7 +22,7 @@
         <div class="post_content">
             <%= post.content %><br> 
 
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mb-3">
             <%= render 'likes/post_form', post: post %>
 
             <% if post.user == current_user %>
@@ -40,6 +40,8 @@
 
 
         <hr>
+					<h3> Answers </h3>
+				<hr>
             <%= render post.comments %>
             <%= render 'comments/form', post: post %>
            

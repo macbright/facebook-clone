@@ -17,7 +17,7 @@ consumer.subscriptions.create("MessagesChannel", {
       if (posts === 10) {
         $(".message-row").first().remove();
       }
-      $("#chat-box").prepend(data.message);
+      $("#chat-box").append(chat_div(data.message));
 			console.log($("#chat-box").append( data ))
        $("#message-field").val('');
     },
@@ -34,6 +34,7 @@ consumer.subscriptions.create("MessagesChannel", {
 });
 
 var submit_messages;
+var chat_div;
 
 $(document).on('turbolinks:load', function(){
 
@@ -55,3 +56,21 @@ submit_messages = function() {
 		}
 	})
 }
+
+chat_div = function(data){
+
+	return `
+		<div class="message-row">
+				<p class="message-body">${data.body}</p>
+					<span> <a href="/users/show.${data.user_id}">
+					<img src="${data.avatar}">
+					</a><small> <a href="/users/show.${data.user_id}">${data.name}</a></small>
+			</span> 
+		</div>
+		<hr/>
+		<br />
+	`;
+}
+
+
+

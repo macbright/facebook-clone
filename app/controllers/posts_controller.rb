@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     set_current_room
     @message = Message.new
     # @messages = Message.where('room_id == ?', current_room)
-    @messages = current_room.messages.last(10) if current_user
+    @messages1 = current_room.messages.last(10) 
     @followers = current_user.friends
   end
 

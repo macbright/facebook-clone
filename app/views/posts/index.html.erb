@@ -25,11 +25,13 @@
 								<%= link_to follower.first_name, posts_path(current_user, roomId: follower.room.id), class: 'followers'%>
 								<br />
 							<% end %>
+							<hr />
+							<%= link_to 'My Channel', posts_path(current_user, roomId: current_user.room.id), class: 'followers'%>
 						</div>
 
 						<div class="col-md-9" id="messages-box">
 							<div id="chat-box" data-room-id=<%= current_room.id%>>
-									<% @messages.each do |message| %>
+									<% @messages1.each do |message| %>
 										<div class="message-row">
 											<p class="message-body"><%= message.body%></p>
 											<span> <%= link_to image_tag(message.user.avatar.url(:thumb)), 
@@ -42,7 +44,7 @@
 							<div id="form-box">
 								<%= form_for @message do |f| %>
 									<%= f.text_field :body, id: 'message-field', class: 'form-control pull-left'%>
-									<%= f.submit 'Send', class: 'btn ', id: 'post-btn'%>
+									<%= f.submit 'Send', class: 'btn ', id: 'post-btn', data: { disable_with: false }%>
 								<% end %>
 							</div>
 						</div>
