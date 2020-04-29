@@ -43,5 +43,5 @@ Rails.application.routes.draw do
   resource :friendships
   resources :messages, only: [:create]
 
-  mount ActionCable.server => '/cable'
+  # mount ActionCable.server => '/cable'
 end
