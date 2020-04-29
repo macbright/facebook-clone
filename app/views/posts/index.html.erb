@@ -5,7 +5,7 @@
 
     <div class="col-md-8 posts1">
 			<div class="my-4 float-right">
-       <%= link_to 'Ask Question', new_posts_path(@post), class: "btn btn-lg btn-success" %> 
+       <%= link_to 'Ask Question', new_post_path, class: "btn btn-lg btn-success" %> 
 			</div>
         <div class="clearfix">
         </div>   
@@ -35,7 +35,7 @@
 										<div class="message-row">
 											<p class="message-body"><%= message.body%></p>
 											<span> <%= link_to image_tag(message.user.avatar.url(:thumb)), 
-																users_show_path(message.user) %><small> <%= link_to message.user.name, users_show_path(message.user) %></small></span> 
+																user_path(message.user) %><small> <%= link_to message.user.name, user_path(message.user) %></small></span> 
 										</div>
 										<hr >
 									<% end %>

@@ -2,10 +2,10 @@
     <div class="row comments-header">
         <div class="col-md-2 mr-0">
             <%= link_to image_tag( comment.user.avatar.url(:thumb)), 
-                users_show_path(comment.user) %>
+                user_path(comment.user) %>
         </div>
         <div class="col-md-10 ml-0 comment-user">
-            <span> <%= link_to comment.user.name, users_show_path(comment.user),
+            <span> <%= link_to comment.user.name, user_path(comment.user),
                         class: 'comment-user mr-1'%>
             <%= comment.content %> </span><br>
             <div class="mt-2">

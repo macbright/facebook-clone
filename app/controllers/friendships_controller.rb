@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
     return unless @friendship.save
 
     flash[:success] = 'Friend request sent'
-    redirect_to users_path
+    redirect_to users_index_path
   end
 
   def destroy
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
     @user = User.find_by(user_id: params[:format])
     current_user.friends.delete(@user)
     flash[:danger] = 'Removed Friend'
-    redirect_to users_path
+    redirect_to users_index_path
   end
 
   def confirm

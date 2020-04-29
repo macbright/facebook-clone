@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   post 'comments/update'
   delete "/delete_comment", to: "comments#destroy"
   
-  get 'users/index'
-  get 'users/show', to: "users#show"
+  get 'users/index' => 'users#index'
   get 'home' => 'home#index'
   get 'posts' => 'posts#index'
   devise_for :users, path: '', path_names: { 
@@ -36,12 +35,12 @@ Rails.application.routes.draw do
   get 'friends', to: 'home#friends'
 
 
-  resource :posts
+  resource :post
   resource :comments
   resource :likes
-  resources :users, only: [:index, :show]
+  resource :user
   resource :friendships
   resources :messages, only: [:create]
 
-  # mount ActionCable.server => '/cable'
+  
 end
