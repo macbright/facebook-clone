@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'posts#index'
   
+  mount ActionCable.server => '/cable'
+  
   get "/friends", to: 'home#friends'
   
   post 'comments/create'
