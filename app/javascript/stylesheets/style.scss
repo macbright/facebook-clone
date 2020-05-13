@@ -187,6 +187,9 @@ body {
 .friends img {
     height: 30px;
 }
+.notification{
+	position: relative;
+}
 
 .notification img {
     height: 20px;
@@ -195,9 +198,16 @@ body {
     margin-top: 10px;
 }
 
+.notification i {
+	color: #fff !important;
+	position: absolute;
+}
+
 .notification-count {
     position: absolute;
-    right: 117px;
+    // right: 176px;
+		left: 10px;
+		top: 5px;
     background-color: red;
     color: #fff;
     font-size: 12px;

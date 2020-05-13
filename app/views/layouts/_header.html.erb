@@ -21,15 +21,18 @@
           </div>
          </li>
         
-        <li class="nav-item notification" > 
-          <i class="fas fa-bell fa-lg mt-2" style="color: white;"></i>
-
-          <% if current_user.friend_requests.count > 0 %> 
-            <%= link_to current_user.friend_requests.count, friends_path, class: "notification-count px-1" %>
-          <% end %>
+        <li class="nav-item notification mx-2" > 
+					<div>
+         	 <i class="fas fa-bell fa-lg mt-3" style="color: white;"></i>
+					</div>
+					<div class="notification-div">
+						<% if current_user.friend_requests.count > 0 %> 
+							<%= link_to current_user.friend_requests.count, friends_path, class: "notification-count px-1 " %>
+						<% end %>
+					</div>
         </li>
 
-        <li class="nav-item" >    
+        <li class="nav-item ml-3 " >    
           <%= link_to 'Connect Developers', users_index_path, class: "nav-link" %>
         </li>
     

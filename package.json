@@ -2,7 +2,7 @@
   "name": "facebook_clone",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.9.0",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
     "@fortawesome/free-regular-svg-icons": "^5.9.0",
@@ -13,7 +13,7 @@
     "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "4.3.1",
-    "jquery": "^3.5.0",
+    "jquery": "3.4.1",
     "popper.js": "^1.15.0",
     "trix": "^1.0.0",
     "turbolinks": "^5.2.0"

@@ -84,5 +84,6 @@ gem 'font_awesome5_rails'
 gem "redis", "~> 3.0.1"
 gem "hiredis", "~> 0.4.5"
 
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
