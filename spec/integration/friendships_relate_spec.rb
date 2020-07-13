@@ -41,7 +41,7 @@ RSpec.describe 'friendships process', type: :feature do
     page.fill_in 'signin_password', with: 'foobar'
     click_on('Sign In')
 
-    visit users_show_path(@user2)
+    visit user_path(@user2)
     click_on('Add As Friend')
 
     visit '/friends'
@@ -55,7 +55,7 @@ RSpec.describe 'friendships process', type: :feature do
     page.fill_in 'signin_password', with: 'foobar'
     click_on('Sign In')
 
-    visit users_show_path(@user2)
+    visit user_path(@user2)
     click_on('Add As Friend')
     click_on('Sign Out')
 

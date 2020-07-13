@@ -20,10 +20,10 @@ RSpec.describe 'Comment and Like functions', type: :feature do
     click_on('Sign In')
     expect(page).to have_content 'Signed in successfully.'
 
-    fill_in('comment[content]', with: 'Test Comment!')
-    click_on('Add comment')
+    fill_in('comment[content]', with: 'Test Answer!')
+    click_on('Post Your Answer')
     expect(page).to have_content 'Comment Saved.'
-    expect(page).to have_content 'Test Comment!'
+    expect(page).to have_content 'Test Answer!'
   end
 
   it 'can like and unlike after login' do

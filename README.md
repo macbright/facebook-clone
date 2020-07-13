@@ -63,7 +63,10 @@ $ apt install redis-server  OR brew install redis
 - LinkedIn: [@bokike](https://www.linkedin.com/in/bokike/)
 - Twitter: [@b_okike](https://twitter.com/b_okike)
 
+## Future Features
+1. convert the app into a single page app using Rails API at the backend and React & Redux at the frontend. 
 
+2. add admin session to the app
 
 
 ## Contributing
